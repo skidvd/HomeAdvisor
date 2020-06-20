@@ -1,0 +1,31 @@
+{
+  "name": "homeadvisor-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js",
+    "start-server": "nodemon server.js",
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "seed": "knex seed:make init_data"
+  },
+  "keywords": [],
+  "author": "Todd Gould",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.3",
+    "supertest": "^4.0.2",
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-express": "^4.1.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "knex": "^0.21.1",
+    "sqlite3": "^4.2.0",
+    "uuid": "^8.1.0"
+  }
+}
