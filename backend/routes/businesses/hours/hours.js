@@ -139,7 +139,7 @@ router.get('/:id', async (req, resp, next) => {
         if (hours && hours.length) {
             resp.status(200).json(hours[0]);
         } else {
-            resp.status(404).send(`The specified business does not exist`);
+            resp.status(404).send(`The specified business/hour combination does not exist`);
             return;
         }
     } catch (err) {
@@ -207,6 +207,8 @@ router.post('/', async (req, resp, next) => {
     // exercise.  However, we would typically want to detect this and notify the caller in some manner
     hour.id = uuid.v4();
     hour.businessId = businessId;
+    delete hour['created_at'];
+    delete hour['updated_at'];
 
     try {
         const businessCount = await db('businesses')

@@ -23,7 +23,8 @@ const db = require('../../../db')
  *            type: string
  *            description: The id of the business to associate the Review with.
  *          rating:
- *            type: integer
+ *            type: number
+ *            format: float
  *            description: Review Rating score out of 5
  *          comment:
  *            type: string
@@ -134,7 +135,7 @@ router.get('/:id', async (req, resp, next) => {
         if (reviews && reviews.length) {
             resp.status(200).json(reviews[0]);
         } else {
-            resp.status(404).send(`The specified business does not exist`);
+            resp.status(404).send(`The specified business/review combination does not exist`);
             return;
         }
     } catch (err) {
@@ -187,6 +188,8 @@ router.post('/', async (req, resp, next) => {
     // exercise.  However, we would typically want to detect this and notify the caller in some manner
     review.id = uuid.v4();
     review.businessId = businessId;
+    delete review['created_at'];
+    delete review['updated_at'];
 
     try {
         const businessCount = await db('businesses')

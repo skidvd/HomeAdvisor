@@ -131,7 +131,7 @@ router.get('/:id', async (req, resp, next) => {
         if (locations && locations.length) {
             resp.status(200).json(locations[0]);
         } else {
-            resp.status(404).send(`The specified business does not exist`);
+            resp.status(404).send(`The specified business/location combination does not exist`);
             return;
         }
     } catch (err) {
@@ -188,6 +188,8 @@ router.post('/', async (req, resp, next) => {
     // exercise.  However, we would typically want to detect this and notify the caller in some manner
     location.id = uuid.v4();
     location.businessId = businessId;
+    delete location['created_at'];
+    delete location['updated_at'];
 
     try {
         const businessCount = await db('businesses')

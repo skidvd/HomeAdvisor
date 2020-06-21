@@ -112,7 +112,7 @@ const MAX_BUSINESS_PER_PAGE = 25;
 /**
  * @swagger
  * tags:
- *   name: Businesses
+ *   name: Business
  *   description: Business API
  */
 
@@ -212,7 +212,7 @@ router.get('/:businessId', async (req, resp, next) => {
  * path:
  *  /businesses/search:
  *    post:
- *      summary: Retrieve the Businesses
+ *      summary: Retrieve the Businesses that match specified search criteria
  *      tags: [Business]
  *      requestBody:
  *        description: The optional Search parameters used to filter the desired Businesses with
@@ -396,6 +396,8 @@ router.post('/', async (req, resp, next) => {
     delete business.services;
     delete business.reviews;
     delete business.avgRating;
+    delete business['created_at'];
+    delete business['updated_at'];
 
     if (!business.name) {
         resp.status(400).send(`Business name must be specified`);
@@ -455,7 +457,7 @@ const addIds = (list, businessId) => {
  * path:
  *  /businesses/{businessId}:
  *    put:
- *      summary: Add a new Business
+ *      summary: Update the unique Business identified by {businessId}
  *      tags: [Business]
  *      parameters:
  *        - in: path
