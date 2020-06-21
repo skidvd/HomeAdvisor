@@ -210,7 +210,7 @@ router.get('/:businessId', async (req, resp, next) => {
 /**
  * @swagger
  * path:
- *  /businesses:
+ *  /businesses/search:
  *    post:
  *      summary: Retrieve the Businesses
  *      tags: [Business]
