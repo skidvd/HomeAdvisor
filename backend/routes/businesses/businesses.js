@@ -30,13 +30,13 @@ const MAX_BUSINESS_PER_PAGE = 25;
  *            type: string
  *            description: addressLine2 for the Business
  *          city:
- *            type: string      (Note - This should typically be constrained, but is not for simplicity purposes in this example as that does not appear to be the purpose of this exercise)
+ *            type: string
  *            description: city for the Business
  *          state:
- *            type: string      (Note - This should typically be constrained, but is not for simplicity purposes in this example as that does not appear to be the purpose of this exercise)
+ *            type: string
  *            description: state for the Business
  *          postal:
- *            type: string      (Note - This should typically be constrained, but is not for simplicity purposes in this example as that does not appear to be the purpose of this exercise)
+ *            type: string
  *            description: postal code for the Business
  *          locations:
  *            type: array
@@ -55,7 +55,8 @@ const MAX_BUSINESS_PER_PAGE = 25;
  *            items:
  *              $ref: '#/components/schemas/Review'
  *          avgRating:
- *            type: decimal
+ *            type: number
+ *            format: float
  *            description: The average (rounded to 1 decimal place) across all review rating associated with the Business (undefined if no ratings yet)
  *          created_at:
  *            type: string
@@ -394,6 +395,7 @@ router.post('/', async (req, resp, next) => {
     delete business.hours;
     delete business.services;
     delete business.reviews;
+    delete business.avgRating;
 
     if (!business.name) {
         resp.status(400).send(`Business name must be specified`);
