@@ -448,6 +448,8 @@ const addIds = (list, businessId) => {
         // exercise.  However, we would typically want to detect this and notify the caller in some manner
         item.id = uuid.v4();
         item.businessId = businessId;
+        delete item['created_at'];
+        delete item['updated_at'];
         return item;
     }) : list;
 }
