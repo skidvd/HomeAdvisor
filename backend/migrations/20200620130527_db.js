@@ -19,7 +19,8 @@ exports.up = (knex) => {
                                                    // simplicity purposes in this example as that does not appear to be
                                                    // the purpose of this exercise
             table.string('postal');
-            table.timestamps(true, true);
+            table.timestamp('created_at').defaultTo(knex.fn.now());
+            table.timestamp('updated_at').defaultTo(knex.fn.now());
         })
         .then(() => {
             // console.log('created businesses');
@@ -35,7 +36,8 @@ exports.up = (knex) => {
                                                                    // simplicity purposes in this example as that does not appear to be
                                                                    // the purpose of this exercise
                 table.unique(['businessId', 'name']);
-                table.timestamps(true, true);
+                table.timestamp('created_at').defaultTo(knex.fn.now());
+                table.timestamp('updated_at').defaultTo(knex.fn.now());
 
                 table.foreign('businessId').references('id').inTable('businesses')
                     .onDelete('CASCADE');
@@ -61,7 +63,8 @@ exports.up = (knex) => {
                 table.integer('close').notNullable();       // TODO: Note: This should typically be constrained, but is not for
                                                                        // simplicity purposes in this example as that does not appear to be
                                                                        // the purpose of this exercise
-                table.timestamps(true, true);
+                table.timestamp('created_at').defaultTo(knex.fn.now());
+                table.timestamp('updated_at').defaultTo(knex.fn.now());
 
                 table.foreign('businessId').references('id').inTable('businesses')
                     .onDelete('CASCADE');
@@ -79,7 +82,8 @@ exports.up = (knex) => {
                 table.string('name').notNullable();     // TODO: Note: This should typically be constrained, but is not for
                                                                    // simplicity purposes in this example as that does not appear to be
                                                                    // the purpose of this exercise
-                table.timestamps(true, true);
+                table.timestamp('created_at').defaultTo(knex.fn.now());
+                table.timestamp('updated_at').defaultTo(knex.fn.now());
                 table.unique(['businessId', 'name']);
 
                 table.foreign('businessId').references('id').inTable('businesses')
@@ -96,7 +100,8 @@ exports.up = (knex) => {
                 table.uuid('businessId').notNullable();
                 table.integer('rating').notNullable();
                 table.string('comment');
-                table.timestamps(true, true);
+                table.timestamp('created_at').defaultTo(knex.fn.now());
+                table.timestamp('updated_at').defaultTo(knex.fn.now());
 
                 table.foreign('businessId').references('id').inTable('businesses')
                     .onDelete('CASCADE');
