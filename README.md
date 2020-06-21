@@ -70,7 +70,7 @@ I have made the following primary assumptions (some additional assumptions are d
     ```
    - When 1., 2. and 3. above have been completed and there are no errors 
    - navigate in Chrome to (http://localhost:4000/docs) 
-   - choose a desired Enpoint and click on the <Try it out> button
+   - choose a desired Endpoint and click on the <Try it out> button
    - Populate any of the required and/or optional fields as appropriate to your testing purposes
    - Click on the <Execute> button
    - See the response below when available
