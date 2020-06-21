@@ -273,7 +273,7 @@ router.put('/:id', async (req, resp, next) => {
         }
 
         const services = await db('services')
-            .update({name: service.name})
+            .update({name: service.name, 'updated_at': db.fn.now()})
             .where({id, businessId});
 
         resp.status(200).end();

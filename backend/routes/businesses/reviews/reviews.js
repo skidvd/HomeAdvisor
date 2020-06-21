@@ -273,7 +273,8 @@ router.put('/:id', async (req, resp, next) => {
         }
 
         const reviewUpdates = {
-            rating: review.rating
+            rating: review.rating,
+            'updated_at': db.fn.now()
         };
         if (review.comment !== undefined) {
             // support removal of a comment via null sentinel

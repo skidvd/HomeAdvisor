@@ -523,7 +523,8 @@ router.put('/:businessId', async (req, resp, next) => {
             addressLine2: business.addressLine2 ? business.addressLine2 : undefined,
             city: business.city ? business.city : undefined,
             state: business.state ? business.state : undefined,
-            postal: business.postal ? business.postal : undefined
+            postal: business.postal ? business.postal : undefined,
+            'updated_at': db.fn.now()
         }
 
         const businesses = await db('businesses')

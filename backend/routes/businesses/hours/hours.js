@@ -304,7 +304,7 @@ router.put('/:id', async (req, resp, next) => {
         }
 
         const hours = await db('hours')
-            .update({dayOfWeek: hour.dayOfWeek, open: hour.open, close: hour.close})
+            .update({dayOfWeek: hour.dayOfWeek, open: hour.open, close: hour.close, 'updated_at': db.fn.now()})
             .where({id, businessId});
 
         resp.status(200).end();
