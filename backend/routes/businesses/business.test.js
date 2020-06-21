@@ -344,7 +344,7 @@ test('Search for initial seed data (case-insensitive service name filter and rat
         done();
 });
 
-test('POST /businesses/ to add new Business (without any dependant data)', async (done) => {
+test('POST /businesses to add new Business (without any dependant data)', async (done) => {
     const business = {
         name: 'ZZZ',
         addressLine1: '123 Main Street',
@@ -373,7 +373,7 @@ test('POST /businesses/ to add new Business (without any dependant data)', async
         });
 });
 
-test('POST /businesses/ to add new Business (with dependant data)', async (done) => {
+test('POST /businesses to add new Business (with dependant data)', async (done) => {
     const business = {
         name: 'ZZZ',
         addressLine1: '123 Main Street',
