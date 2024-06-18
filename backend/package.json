@@ -14,7 +14,7 @@
   "author": "Todd Gould",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^26.0.1",
+    "jest": "^29.7.0",
     "nodemon": "^2.0.20",
     "supertest": "^4.0.2",
     "swagger-jsdoc": "^4.0.0",
